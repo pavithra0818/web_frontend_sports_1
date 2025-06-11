@@ -104,25 +104,25 @@ export default function PayoutCalculator() {
 
   return (
     <div className="space-y-6 mt-8">
-      <h2 className="text-lg font-bold text-black mb-2">Payout Calculator</h2>
-      <div className="flex gap-4 items-end">
+      <h2 className="text-lg font-bold text-black dark:text-white mb-2">Payout Calculator</h2>
+      <div className="flex gap-4 items-end bg-white dark:bg-gray-800 p-4 rounded shadow">
         {localRates.map((rate: any) => (
           <div key={rate.type}>
-            <label className="block text-sm font-medium text-black capitalize">{rate.type} rate ($)</label>
+            <label className="block text-sm font-medium text-black dark:text-gray-200 capitalize">{rate.type} rate ($)</label>
             <input
               type="number"
               min={0}
               value={rate.rate}
               onChange={e => handleRateChange(rate.type, Number(e.target.value))}
-              className="border rounded px-2 py-1 text-black"
+              className="border rounded px-2 py-1 text-black dark:text-gray-100 bg-white dark:bg-gray-900"
             />
           </div>
         ))}
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded shadow text-black">
+        <table className="min-w-full bg-white dark:bg-gray-100 rounded shadow text-black dark:text-gray-900">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 dark:bg-gray-200">
               <th className="px-4 py-2 font-semibold">Author</th>
               <th className="px-4 py-2 font-semibold">Article Count</th>
               <th className="px-4 py-2 font-semibold">Total Payout ($)</th>
@@ -130,7 +130,7 @@ export default function PayoutCalculator() {
           </thead>
           <tbody>
             {authorPayouts.map((a, idx) => (
-              <tr key={idx} className="border-t bg-white hover:bg-gray-50">
+              <tr key={idx} className="border-t bg-white hover:bg-gray-50 dark:bg-gray-200">
                 <td className="px-4 py-2">{a.author}</td>
                 <td className="px-4 py-2">{a.articleCount}</td>
                 <td className="px-4 py-2">{a.totalPayout}</td>

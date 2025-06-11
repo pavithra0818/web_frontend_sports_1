@@ -47,39 +47,39 @@ export default function NewsDashboard() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap gap-4 items-end">
+      <div className="flex flex-wrap gap-4 items-end bg-white dark:bg-gray-800 p-4 rounded shadow">
         <div>
-          <label className="block text-sm font-medium text-black">Search</label>
-          <input type="text" value={search} onChange={e => setSearch(e.target.value)} className="border rounded px-2 py-1 text-black" placeholder="Keyword..." />
+          <label className="block text-sm font-medium text-black dark:text-gray-200">Search</label>
+          <input type="text" value={search} onChange={e => setSearch(e.target.value)} className="border rounded px-2 py-1 text-black dark:text-gray-100 bg-white dark:bg-gray-900" placeholder="Keyword..." />
         </div>
         <div>
-          <label className="block text-sm font-medium text-black">Author</label>
-          <input type="text" value={author} onChange={e => setAuthor(e.target.value)} className="border rounded px-2 py-1 text-black" placeholder="Author..." />
+          <label className="block text-sm font-medium text-black dark:text-gray-200">Author</label>
+          <input type="text" value={author} onChange={e => setAuthor(e.target.value)} className="border rounded px-2 py-1 text-black dark:text-gray-100 bg-white dark:bg-gray-900" placeholder="Author..." />
         </div>
         <div>
-          <label className="block text-sm font-medium text-black">Type</label>
-          <select value={type} onChange={e => setType(e.target.value)} className="border rounded px-2 py-1 text-black">
+          <label className="block text-sm font-medium text-black dark:text-gray-200">Type</label>
+          <select value={type} onChange={e => setType(e.target.value)} className="border rounded px-2 py-1 text-black dark:text-gray-100 bg-white dark:bg-gray-900">
             <option value="all">All</option>
             <option value="news">News</option>
             <option value="blog">Blog</option>
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-black">From</label>
-          <input type="date" value={from} onChange={e => setFrom(e.target.value)} className="border rounded px-2 py-1 text-black" />
+          <label className="block text-sm font-medium text-black dark:text-gray-200">From</label>
+          <input type="date" value={from} onChange={e => setFrom(e.target.value)} className="border rounded px-2 py-1 text-black dark:text-gray-100 bg-white dark:bg-gray-900" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-black">To</label>
-          <input type="date" value={to} onChange={e => setTo(e.target.value)} className="border rounded px-2 py-1 text-black" />
+          <label className="block text-sm font-medium text-black dark:text-gray-200">To</label>
+          <input type="date" value={to} onChange={e => setTo(e.target.value)} className="border rounded px-2 py-1 text-black dark:text-gray-100 bg-white dark:bg-gray-900" />
         </div>
         <button onClick={handleFilter} className="bg-blue-600 text-white px-4 py-2 rounded">Apply</button>
       </div>
       {loading && <div>Loading articles...</div>}
       {error && <div className="text-red-500">{error}</div>}
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded shadow text-black">
+        <table className="min-w-full bg-white dark:bg-gray-100 rounded shadow text-black dark:text-gray-900">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 dark:bg-gray-200">
               <th className="px-4 py-2 font-semibold">Title</th>
               <th className="px-4 py-2 font-semibold">Author</th>
               <th className="px-4 py-2 font-semibold">Date</th>
@@ -89,9 +89,11 @@ export default function NewsDashboard() {
           </thead>
           <tbody>
             {filteredArticles.map((article: any, idx: number) => (
-              <tr key={idx} className="border-t bg-white hover:bg-gray-50">
+              <tr key={idx} className="border-t bg-white hover:bg-gray-50 dark:bg-gray-200">
                 <td className="px-4 py-2 max-w-xs truncate">
-                  <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{article.title}</a>
+                  <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    {article.title}
+                  </a>
                 </td>
                 <td className="px-4 py-2">{article.author || '-'}</td>
                 <td className="px-4 py-2">{article.publishedAt ? format(parseISO(article.publishedAt), 'yyyy-MM-dd') : '-'}</td>
